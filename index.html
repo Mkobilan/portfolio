@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matthew Kobilan | Full-stack product builder</title>
+<meta name="description" content="I build and ship complete software products: a restaurant POS, a lead generation CRM, auto shop software and a 3D browser game.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23C8102E'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='white' text-anchor='middle'%3EMK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --steel: #E6EAED;
+    --rail: #9AA6AF;
+    --ink: #1C2630;
+    --muted: #55626D;
+    --paper: #FFFFFC;
+    --red: #C8102E;
+    --night: #14141F;
+    --neon: #FF4FB8;
+    --measure: 68ch;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--steel);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 "Archivo", system-ui, sans-serif;
+    font-variation-settings: "wdth" 100;
+  }
+  a { color: inherit; text-decoration-color: var(--red); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+  a:hover { color: var(--red); }
+  :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header.top { padding: 22px 0; }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .wordmark { font-weight: 800; font-variation-settings: "wdth" 125; letter-spacing: -0.01em; text-decoration: none; }
+  nav a { margin-left: 20px; text-decoration: none; color: var(--muted); }
+  nav a:first-child { margin-left: 0; }
+  nav a:hover { color: var(--red); }
+
+  /* Hero */
+  .hero { padding: 48px 0 96px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: start; }
+  h1 {
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 0.98;
+    font-weight: 800;
+    font-variation-settings: "wdth" 72;
+    letter-spacing: -0.02em;
+    margin: 24px 0 28px;
+    max-width: 14ch;
+  }
+  .lede { font-size: 1.25rem; max-width: 40ch; color: var(--ink); margin: 0 0 32px; }
+  .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 14px 22px; font-weight: 700; text-decoration: none;
+    border: 2px solid var(--ink); border-radius: 2px;
+  }
+  .btn.primary { background: var(--ink); color: var(--paper); }
+  .btn.primary:hover { background: var(--red); border-color: var(--red); color: var(--paper); }
+  .btn:hover { color: var(--red); border-color: var(--red); }
+
+  /* The ticket rail */
+  .rail-area { position: relative; padding-top: 18px; }
+  .rail {
+    height: 14px; border-radius: 3px;
+    background: linear-gradient(#C9D1D7, var(--rail) 60%, #7F8B94);
+    box-shadow: 0 2px 0 rgba(28,38,48,.15);
+  }
+  .ticket {
+    position: relative; margin: -4px auto 0; width: min(100%, 360px);
+    background: var(--paper);
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.875rem; line-height: 1.55;
+    padding: 26px 24px 34px;
+    transform-origin: top center;
+    box-shadow: 0 18px 30px -18px rgba(28,38,48,.45);
+    animation: print 1.4s cubic-bezier(.2,.7,.2,1) both .2s;
+    /* torn bottom edge */
+    -webkit-mask: linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,
+      conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom/16px 10px repeat-x;
+            mask: linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,
+      conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom/16px 10px repeat-x;
+  }
+  @keyframes print { from { clip-path: inset(0 0 100% 0); transform: translateY(-6px) rotate(0deg); } to { clip-path: inset(0 0 0 0); transform: translateY(0) rotate(-1.2deg); } }
+  .ticket .t-head { text-align: center; border-bottom: 1px dashed var(--ink); padding-bottom: 12px; margin-bottom: 12px; }
+  .ticket .t-head strong { display: block; font-size: 1.05rem; }
+  .ticket .red { color: var(--red); font-weight: 600; }
+  .ticket ul { list-style: none; margin: 0; padding: 0; }
+  .ticket li { display: flex; justify-content: space-between; gap: 12px; }
+  .ticket li span:last-child { white-space: nowrap; }
+  .ticket .mod { padding-left: 2ch; color: var(--muted); }
+  .ticket .t-foot { border-top: 1px dashed var(--ink); margin-top: 12px; padding-top: 12px; }
+  .ticket .t-foot div { display: flex; justify-content: space-between; }
+
+  /* Sections */
+  section { padding: 88px 0; }
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; font-weight: 800;
+    font-variation-settings: "wdth" 80; letter-spacing: -0.015em; margin: 0 0 16px;
+  }
+  .intro { max-width: var(--measure); color: var(--muted); margin: 0 0 48px; }
+  h3 { font-size: 1.6rem; line-height: 1.15; font-weight: 800; font-variation-settings: "wdth" 90; margin: 0 0 4px; }
+  .what { color: var(--red); font-weight: 600; margin: 0 0 16px; }
+  .work p, .work li { max-width: var(--measure); }
+  .work ul { padding-left: 1.1em; margin: 0 0 18px; }
+  .work li { margin-bottom: 6px; }
+  .stack { color: var(--muted); font-size: 0.95rem; margin: 0 0 14px; }
+
+  .feature {
+    background: var(--paper); padding: 44px; border-left: 8px solid var(--red);
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; margin-bottom: 28px;
+  }
+  .feature .facts { border-left: 1px solid #D5DBDF; padding-left: 28px; display: grid; gap: 22px; align-content: start; }
+  .fact b { display: block; font-size: 2rem; line-height: 1; font-weight: 800; font-variation-settings: "wdth" 70; }
+  .fact span { color: var(--muted); font-size: 0.95rem; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 28px; }
+  .pair > article { background: var(--paper); padding: 36px; }
+
+  /* Game: its own world */
+  .game {
+    background: var(--night); color: #E9E6F5; padding: 44px; margin-bottom: 28px;
+    background-image: linear-gradient(rgba(255,79,184,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,79,184,.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .game h3 { font-variation-settings: "wdth" 125; letter-spacing: 0.04em; color: #fff; text-shadow: 0 0 18px rgba(255,79,184,.65); }
+  .game .what { color: var(--neon); }
+  .game .stack { color: #A9A4C2; }
+  .game a { text-decoration-color: var(--neon); }
+  .game a:hover { color: var(--neon); }
+
+  .more { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 32px; padding-top: 12px; }
+  .more div { border-top: 2px solid var(--ink); padding: 16px 0 24px; }
+  .more b { display: block; font-size: 1.1rem; }
+  .more p { margin: 4px 0 0; color: var(--muted); font-size: 0.97rem; }
+
+  /* How I work */
+  .how { background: var(--ink); color: #E9EDF0; }
+  .how .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .how p { max-width: 58ch; }
+  .how .skills { list-style: none; padding: 0; margin: 0; }
+  .how .skills li { padding: 12px 0; border-bottom: 1px solid #3A4651; }
+  .how .skills b { display: block; color: #fff; }
+  .how .skills span { color: #AEB8C0; }
+
+  /* Before software: a real timeline */
+  .timeline { list-style: none; padding: 0; margin: 0; max-width: 820px; }
+  .timeline li { display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 18px 0; border-top: 1px solid #C6CED4; }
+  .timeline .yr { font-family: "IBM Plex Mono", monospace; font-weight: 600; color: var(--red); }
+  .timeline b { display: block; }
+  .timeline span { color: var(--muted); }
+
+  /* Contact */
+  .contact { padding-bottom: 120px; }
+  .contact h2 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-variation-settings: "wdth" 70; max-width: 16ch; }
+  .contact .lines { font-size: 1.25rem; display: grid; gap: 8px; margin-top: 28px; }
+  footer { padding: 28px 0 40px; color: var(--muted); font-size: 0.9rem; }
+
+  @media (max-width: 880px) {
+    .hero .wrap, .feature, .pair, .how .cols { grid-template-columns: 1fr; }
+    .feature .facts { border-left: 0; padding-left: 0; border-top: 1px solid #D5DBDF; padding-top: 24px; grid-template-columns: repeat(3, 1fr); }
+    .more { grid-template-columns: 1fr 1fr; }
+    nav { display: none; }
+  }
+  @media (max-width: 560px) {
+    .feature, .pair > article, .game { padding: 28px 22px; }
+    .feature .facts { grid-template-columns: 1fr; }
+    .more { grid-template-columns: 1fr; }
+    .timeline li { grid-template-columns: 1fr; gap: 4px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticket { animation: none; transform: rotate(-1.2deg); }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="wordmark" href="#">Matthew Kobilan</a>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#how">How I work</a>
+      <a href="#before">Before software</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div>
+        <h1 id="hero-title">I build software for the jobs I used to work.</h1>
+        <p class="lede">Ten years on restaurant floors, a junk removal crew and a thrift store taught me what small businesses actually need. Now I build it, ship it and sell it myself.</p>
+        <div class="actions">
+          <a class="btn primary" href="#work">See what I've shipped</a>
+          <a class="btn" href="mailto:matthew.kobilan@gmail.com">Email me</a>
+        </div>
+      </div>
+
+      <div class="rail-area" aria-label="A kitchen ticket listing the products I've shipped">
+        <div class="rail" aria-hidden="true"></div>
+        <div class="ticket">
+          <div class="t-head">
+            <strong>KOBILAN KITCHEN</strong>
+            Order #7 &nbsp; Server: Matthew<br>
+            San Antonio, TX
+          </div>
+          <ul>
+            <li><span>1 HubPlate</span><span>LIVE</span></li>
+            <li class="mod"><span>+ Android POS, card reader</span></li>
+            <li class="mod"><span>+ Claude connector</span></li>
+            <li><span>1 Lead Gen Hub</span><span>LIVE</span></li>
+            <li><span>1 Baybolt</span><span>LIVE</span></li>
+            <li><span>1 Hugloom</span><span>LIVE</span></li>
+            <li><span>1 Raid Meme Gen</span><span>LIVE</span></li>
+            <li><span>1 InvoiceGen</span><span>LIVE</span></li>
+            <li><span>1 Hangroom</span><span>LIVE</span></li>
+            <li class="red"><span>1 VERDICT 2087</span><span>FIRING</span></li>
+            <li class="mod"><span>no notes, ship it hot</span></li>
+          </ul>
+          <div class="t-foot">
+            <div><span>Shipped</span><span>7</span></div>
+            <div><span>In progress</span><span>1</span></div>
+            <div class="red"><span>Team size</span><span>1</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <h2 id="work-title">What I've shipped</h2>
+      <p class="intro">Every product here is live, built end to end by me: database, payments, the app itself and the site that sells it.</p>
+
+      <article class="feature">
+        <div>
+          <h3><a href="https://www.hubplate.app" target="_blank" rel="noopener">HubPlate</a></h3>
+          <p class="what">Point of sale and management software for restaurants</p>
+          <p>The tool I wished I'd had on every shift. One system for the front of house, the kitchen and the office.</p>
+          <ul>
+            <li>Ordering, floor plans, reservations, waitlist, staff scheduling, inventory and recipe costing, loyalty and gift cards</li>
+            <li>An Android POS app that takes card payments through Stripe card readers and prints to the kitchen</li>
+            <li>A Claude connector so an owner can ask for last night's sales or build next week's schedule in plain English</li>
+          </ul>
+          <p class="stack">Next.js, TypeScript, Supabase, Stripe Terminal, Capacitor, Anthropic and Gemini APIs</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><b>130K+</b><span>lines of TypeScript</span></div>
+          <div class="fact"><b>250+</b><span>database migrations</span></div>
+          <div class="fact"><b>In person</b><span>I sell it door to door to San Antonio restaurants</span></div>
+        </div>
+      </article>
+
+      <div class="pair">
+        <article>
+          <h3><a href="https://www.leadgenhub.app" target="_blank" rel="noopener">Lead Gen Hub</a></h3>
+          <p class="what">Lead generation, CRM and cold email for local businesses</p>
+          <p>Finds businesses, enriches their contacts, and runs email campaigns with warm-up, reply tracking and unsubscribe handling built in. I run all of my own sales outreach through it every weekday.</p>
+          <p class="stack">Playwright scraping, IMAP and SMTP, partner API, Claude connector</p>
+        </article>
+        <article>
+          <h3><a href="https://baybolt.app" target="_blank" rel="noopener">Baybolt</a></h3>
+          <p class="what">Software for auto repair shops</p>
+          <p>Bays, mechanics, digital vehicle inspections, quotes and invoices in one place, with Stripe billing and payments for shops and their customers.</p>
+          <p class="stack">Next.js, Supabase, Stripe Connect, React Email, PDF invoices</p>
+        </article>
+      </div>
+
+      <article class="game">
+        <h3>VERDICT 2087</h3>
+        <p class="what">A 3D arena brawler in the browser, in development. Private for now; demo on request.</p>
+        <p>An innocent man fights for his freedom on a TV show run by the corporation that framed him. Ten arenas, ten bosses, a ratings meter that rewards variety, and a story told between rounds. I started it in Unity, then rebuilt it in the browser to move faster, with a desktop build ready for Steam.</p>
+        <p class="stack">Three.js, Vite, Electron, synthesized audio, Mixamo animation. Earlier prototype in Unity and C#.</p>
+      </article>
+
+      <div class="more">
+        <div><b><a href="https://hangroom.vercel.app" target="_blank" rel="noopener">HangRoom</a></b><p>A membership and merch platform for content creators, with zero platform fees.</p></div>
+        <div><b><a href="https://hugloom.vercel.app" target="_blank" rel="noopener">Hugloom</a></b><p>A social app for people caring for their aging parents.</p></div>
+        <div><b><a href="https://www.raidmemegen.com" target="_blank" rel="noopener">Raid Meme Gen</a></b><p>Raid planning and memes for gamers, with a Phaser game scene.</p></div>
+        <div><b><a href="https://invoicegen-sepia.vercel.app" target="_blank" rel="noopener">InvoiceGen</a></b><p>Fast invoices for small businesses.</p></div>
+        <div><b><a href="https://vicevault.vercel.app" target="_blank" rel="noopener">Vice Vault</a></b><p>A GTA VI fan companion app with a live community map.</p></div>
+        <div><b><a href="https://github.com/Mkobilan/sparkyn" target="_blank" rel="noopener">Sparkyn</a></b><p>Turns an idea into a short AI-generated video. Code on GitHub.</p></div>
+        <div><b><a href="https://github.com/Mkobilan/Benjamin" target="_blank" rel="noopener">Benjamin</a></b><p>A Python trading bot for prediction markets, with a paper-trading mode. Code on GitHub.</p></div>
+        <div><b>Crypto payments and NFT minting</b><p>Built for Lemon Club Collective's merch store.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="how" aria-labelledby="how-title">
+    <div class="wrap cols">
+      <div>
+        <h2 id="how-title">How I work</h2>
+        <p>I build with AI coding agents, mainly Claude Code, as my everyday tool. I decide what gets built, how it should behave and whether it's right; the agents help me write it fast. That's how one person ships seven products.</p>
+        <p>Because I sell what I build, I hear from customers directly, and I can turn what they tell me into a working change the same week.</p>
+      </div>
+      <ul class="skills">
+        <li><b>Product</b><span>Next.js, React, TypeScript, Tailwind, Android apps with Capacitor</span></li>
+        <li><b>Data and backend</b><span>Supabase, Postgres, row-level security, APIs, webhooks, scheduled jobs</span></li>
+        <li><b>Payments</b><span>Stripe subscriptions, Connect and card readers</span></li>
+        <li><b>AI and automation</b><span>Claude and Gemini APIs, MCP connectors, AI agents for outreach and content</span></li>
+        <li><b>Games</b><span>Three.js, Phaser, Unity</span></li>
+        <li><b>Business</b><span>Sales, cold outreach, customer discovery, Facebook ads</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="before" aria-labelledby="before-title">
+    <div class="wrap">
+      <h2 id="before-title">Before software</h2>
+      <p class="intro">I've been starting things for a long time. Each one taught me something I now build into products.</p>
+      <ol class="timeline">
+        <li><span class="yr">2025 – now</span><div><b>Founder and solo developer</b><span>HubPlate, Baybolt, Lead Gen Hub and more</span></div></li>
+        <li><span class="yr">2024 – 2025</span><div><b>Web developer, Lemon Club Collective</b><span>Crypto payments and NFT minting for a startup's store</span></div></li>
+        <li><span class="yr">2021 – 2024</span><div><b>Owner, American Bros Junk Removal</b><span>Grew it to $80K–$100K a year with a crew of two</span></div></li>
+        <li><span class="yr">2019 – 2021</span><div><b>Founder, 323 Marketplace</b><span>From one item to an 8,500 sq ft thrift store</span></div></li>
+        <li><span class="yr">2014 – now</span><div><b>Restaurant industry, 10+ years</b><span>Where HubPlate came from</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <h2 id="contact-title">Looking for someone who ships? Let's talk.</h2>
+      <p class="intro">I'm open to remote roles in AI automation, solutions and implementation, and product engineering.</p>
+      <div class="lines">
+        <a href="mailto:matthew.kobilan@gmail.com">matthew.kobilan@gmail.com</a>
+        <a href="https://www.linkedin.com/in/matthew-kobilan-70a985308/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/Mkobilan" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Matthew Kobilan, San Antonio, Texas</div>
+</footer>
+
+</body>
+</html>
