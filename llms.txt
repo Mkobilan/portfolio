@@ -1,0 +1,32 @@
+# Matthew Kobilan
+
+> Self-taught full-stack developer and AI product builder in San Antonio, Texas (US citizen). Has shipped seven live software products on his own. Open to remote roles in AI automation, solutions and implementation engineering, and product engineering.
+
+Contact: https://matthewkobilan.vercel.app/#contact
+LinkedIn: https://www.linkedin.com/in/matthew-kobilan-70a985308/
+GitHub: https://github.com/Mkobilan
+Portfolio: https://matthewkobilan.vercel.app/
+
+## Products
+
+- [HubPlate](https://www.hubplate.app): restaurant point of sale and management software. Ordering, floor plans, reservations, waitlist, scheduling, inventory and recipe costing, loyalty, gift cards. Android POS app with Stripe card readers. Claude connector (MCP server with OAuth). About 130,000 lines of TypeScript.
+- [Lead Gen Hub](https://www.leadgenhub.app): lead generation, CRM and cold email for local businesses. Playwright scraping, contact enrichment, campaigns with warm-up, IMAP reply tracking, unsubscribe handling, partner API, Claude connector.
+- [Baybolt](https://baybolt.app): auto repair shop software. Bays, mechanics, digital vehicle inspections, quotes, PDF invoices, Stripe billing and Stripe Connect payments.
+- [HangRoom](https://hangroom.vercel.app): membership and merch platform for content creators.
+- [Hugloom](https://hugloom.vercel.app): social app for people caring for their aging parents.
+- [Raid Meme Gen](https://www.raidmemegen.com): raid planning and memes for gamers.
+- [InvoiceGen](https://invoicegen-sepia.vercel.app): invoice generator for small businesses.
+- [Vice Vault](https://vicevault.vercel.app): GTA VI fan companion app with a live community map.
+- VERDICT 2087: 3D cyberpunk arena brawler in Three.js, in development, desktop build planned for Steam.
+
+## Skills
+
+Next.js, React, TypeScript, Tailwind, Supabase/Postgres (row-level security), Stripe (subscriptions, Connect, Terminal card readers), Capacitor (Android), Claude and Gemini APIs, MCP servers, AI agents for outreach and content, Three.js, Phaser, Unity, crypto payments and NFT minting. Builds with AI coding agents, mainly Claude Code.
+
+## Background
+
+- 2025 to now: founder and solo developer of HubPlate, Baybolt and Lead Gen Hub
+- 2024 to 2025: web developer, Lemon Club Collective (crypto wallet payments and NFT minting)
+- 2021 to 2024: owner, American Bros Junk Removal ($80K to $100K yearly revenue, crew of two)
+- 2019 to 2021: founder, 323 Marketplace (grew to an 8,500 sq ft thrift store)
+- 2014 to now: 10+ years in the restaurant industry
